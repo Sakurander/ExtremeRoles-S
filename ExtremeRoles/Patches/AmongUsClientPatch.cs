@@ -91,6 +91,10 @@ namespace ExtremeRoles.Patches
                         noWinner.Add(playerInfo);
                     }
                 }
+                else if (role.Id == ExtremeRoleId.Xion)
+                {
+                    noWinner.Add(playerInfo);
+                }
 
                 var multiAssignRole = role as Roles.API.MultiAssignRoleBase;
 
