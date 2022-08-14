@@ -83,6 +83,8 @@ namespace ExtremeRoles
             // 幽霊役職
             SetGhostRole,
             UseGhostRoleAbility,
+
+            XionAbility,
         }
 
         public static void Call(
@@ -591,6 +593,11 @@ namespace ExtremeRoles
         {
             ExtremeRolesPlugin.GameDataStore.AbilityManager.UseGhostAbility(
                 abilityType, isReport, ref reader);
+        }
+
+        public static void XionAbility(ref MessageReader reader)
+        {
+            Roles.Solo.Host.Xion.UseAbility(ref reader);
         }
 
     }

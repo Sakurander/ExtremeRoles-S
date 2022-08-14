@@ -281,8 +281,11 @@ namespace ExtremeRoles.Patches
 
             if (role.CanUseSabotage())
             {
-                // インポスターとヴィジランテは死んでもサボタージ使える
-                if (enable && (role.IsImpostor() || role.Id == ExtremeRoleId.Vigilante))
+                // インポスターとヴィジランテ、シオンは死んでもサボタージ使える
+                if (enable && 
+                    (role.IsImpostor() || (
+                        role.Id == ExtremeRoleId.Vigilante ||
+                        role.Id == ExtremeRoleId.Xion)))
                 {
                     hudManager.SabotageButton.Show();
                     hudManager.SabotageButton.gameObject.SetActive(true);
@@ -708,6 +711,9 @@ namespace ExtremeRoles.Patches
                     bool isReport = reader.ReadBoolean();
                     RPCOperator.UseGhostRoleAbility(
                         useGhostRoleType, isReport, ref reader);
+                    break;
+                case RPCOperator.Command.XionAbility:
+                    RPCOperator.XionAbility(ref reader);
                     break;
                 default:
                     break;
